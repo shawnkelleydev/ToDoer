@@ -84,6 +84,11 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+input[type="checkbox"] {
+  margin-left: 20px;
+  background-color: white;
+}
+
 #add,
 .remove {
   background: rgb(0, 182, 243);
