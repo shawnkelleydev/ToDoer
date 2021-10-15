@@ -1,21 +1,8 @@
-/*
+/* --------------------------------
 
-active li html
+  DECLARATIONS / INITIAL CONTENT
 
-<li>
-  <label for="item" class="todo-container">
-    <input type="checkbox" id="item" />
-    <span>Make a todo app for personal use</span>
-  </label>
-</li>;
-
-*/
-
-/* -------------
-
-  ADD ITEMS
-
-------------- */
+-------------------------------- */
 
 const form = document.querySelector("form");
 const activeUL = document.querySelector("#active");
@@ -26,10 +13,30 @@ let text = document.getElementById("new-item");
 //focus textbox
 text.focus();
 
+//sets up remove listeners;
+function removeItems(btn, item, storageKey) {
+  btn.addEventListener("click", () => {
+    item.remove();
+    localStorage.removeItem(storageKey);
+  });
+}
+
+//handles checkboxes
+function checkBoxListen(checkbox) {
+  checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+      checkbox.parentElement.style.background = "rgb(40, 40, 40)";
+    } else {
+      checkbox.parentElement.style.background = "";
+    }
+  });
+}
+
 //reload previous content
 function reloadStoredItems() {
+  //grabs unique keys from local storage
   keys = Object.keys(localStorage);
-  console.log(localStorage.getItem(keys[0]));
+  //writes / adds behavior to each list item
   for (let i = 0; i < keys.length; i++) {
     activeUL.insertAdjacentHTML(
       "beforeend",
@@ -39,27 +46,32 @@ function reloadStoredItems() {
   </li>
   `
     );
-    //checkbox
+    //checkbox toggle
     let checkbox = document.getElementById(`${keys[i]}`);
     checkBoxListen(checkbox, `${keys[i]}`);
-    //remove
+    //removes from display and storage
     let removeBtn = document.getElementById(`r${keys[i]}`);
     let li = document.getElementById(`li${keys[i]}`);
-    localStorage.setItem(keys[i], li.innerHTML);
-    removeBtn.addEventListener("click", () => {
-      li.remove();
-      localStorage.removeItem(`${keys[i]}`);
-    });
+    removeItems(removeBtn, li, keys[i]);
   }
 }
 
+//fires reloaded content
 reloadStoredItems();
 
-//add / remove items
+/* -------------------------
+
+  ADD / REMOVE NEW ITEMS
+
+------------------------- */
+
 function addItem(e) {
   e.preventDefault();
+  //initial declarations
   const newItem = document.querySelector("#new-item").value;
+  //n = a unique barcode for each item
   const n = Math.random();
+  //html writer
   activeUL.insertAdjacentHTML(
     "beforeend",
     `
@@ -72,30 +84,22 @@ function addItem(e) {
   </li>
   `
   );
-
+  //handles checkbox style toggle
   let checkbox = document.getElementById(n);
   checkBoxListen(checkbox);
+  //declarations for storage addition and storage/li removal
   let removeBtn = document.getElementById(`r${n}`);
   let li = document.getElementById(`li${n}`);
+  let key = `${n}`;
+  //adds new item to local storage
   localStorage.setItem(n, li.innerHTML);
-  removeBtn.addEventListener("click", () => {
-    li.remove();
-    localStorage.removeItem(`${n}`);
-  });
+  //sets up remove buttons -- removes from display and storage
+  removeItems(removeBtn, li, key);
+  //clears input field
   document.querySelector("#new-item").value = "";
 }
 
+//form submission listener, activates addItem()
 form.addEventListener("submit", (e) => {
   addItem(e);
 });
-
-//checkBoxListen
-function checkBoxListen(checkbox) {
-  checkbox.addEventListener("change", () => {
-    if (checkbox.checked) {
-      checkbox.parentElement.style.background = "rgb(40, 40, 40)";
-    } else {
-      checkbox.parentElement.style.background = "";
-    }
-  });
-}
