@@ -1,8 +1,8 @@
-/* --------------------------------
+/* -----------------------------------
 
-  DECLARATIONS / INITIAL CONTENT
+  DECLARATIONS / CALLBACK FUNCTIONS
 
--------------------------------- */
+----------------------------------- */
 
 const form = document.querySelector("form");
 const activeUL = document.querySelector("#active");
@@ -32,7 +32,12 @@ function checkBoxListen(checkbox) {
   });
 }
 
-//reload previous content
+/* -----------------------------
+
+  RELOAD FROM LOCAL STORAGE
+
+----------------------------- */
+
 function reloadStoredItems() {
   //grabs unique keys from local storage
   keys = Object.keys(localStorage);
