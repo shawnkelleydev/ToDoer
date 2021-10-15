@@ -75,13 +75,6 @@ function addItem(e) {
 
   let checkbox = document.getElementById(n);
   checkBoxListen(checkbox);
-  // checkbox.addEventListener("change", () => {
-  //   if (checkbox.checked) {
-  //     checkbox.parentElement.style.background = "rgb(40, 40, 40)";
-  //   } else {
-  //     checkbox.parentElement.style.background = "";
-  //   }
-  // });
   let removeBtn = document.getElementById(`r${n}`);
   let li = document.getElementById(`li${n}`);
   localStorage.setItem(n, li.innerHTML);
