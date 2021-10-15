@@ -21,9 +21,9 @@ const form = document.querySelector("form");
 const activeUL = document.querySelector("#active");
 let remove;
 let items;
-let textarea = document.querySelector("textarea");
+let text = document.getElementById("new-item");
 
-textarea.focus();
+text.focus();
 
 function addItem(e) {
   const newItem = document.querySelector("#new-item").value;

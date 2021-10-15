@@ -39,7 +39,7 @@ form,
   align-items: center;
 }
 
-textarea,
+input[type="text"],
 #add,
 .todo-container,
 h2,
@@ -55,15 +55,17 @@ li {
   margin-bottom: 20px;
 }
 
-textarea,
+input[type="text"],
 button,
 li {
   border: none;
   font-size: 1em;
 }
 
-textarea {
+input[type="text"] {
   grid-column: 1/3;
+  height: 44px;
+  padding-left: 10px;
 }
 
 #add {
@@ -71,9 +73,15 @@ textarea {
 }
 
 button,
-textarea {
+input[type="text"] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+button,
+label,
+input[type="checkbox"] {
+  cursor: pointer;
 }
 
 #add,
