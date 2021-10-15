@@ -7,13 +7,35 @@
     <title>ToDoer</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <h1>ToDoer</h1>
-    <p>quotes</p>
-    <label for="new-item">New ToDo</label>
-    <input type="text" name="new-item" id="new-item" />
-
+    <!-- <ul>
+      <li>weather</li>
+      <li>quote</li>
+    </ul> -->
+    <div id="add-container">
+      <form action="index.html">
+        <textarea name="new-item" id="new-item" /></textarea>
+        <button id="add" type="submit">add</button>
+      </form>
+    </div>
+    <h2>active</h2>
+    <ul id="active">
+      <li>
+        <label for="item" class="todo-container">
+          <input type="checkbox" id="item" />
+          <span>Make a todo app for personal use</span>
+        </label>
+      </li>
+    </ul>
+    <!--end content-->
     <script src="js/script.js"></script>
   </body>
 </html>

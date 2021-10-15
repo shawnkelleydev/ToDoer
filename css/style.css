@@ -2,6 +2,7 @@ html {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
 }
 
 *,
@@ -10,9 +11,89 @@ html {
   box-sizing: inherit;
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: rgb(0, 0, 61);
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-container,
+#active {
+  width: 100%;
+  max-width: 500px;
+  padding: 0 20px;
+}
+
+#add-container,
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+textarea,
+button,
+.todo-container,
+h2 {
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+textarea,
+button {
+  height: 80px;
+  border: none;
+}
+
+textarea {
+  width: 100%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+button {
+  width: 100px;
+  background: rgb(0, 182, 243);
+  color: white;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+button:active {
+  background: white;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.todo-container {
+  background-color: white;
+  color: black;
+  display: grid;
+  grid-template-columns: 40px auto;
+  align-items: center;
+  padding: 20px;
+  border: none;
+  text-align: left;
+}
+
+.todo-container input {
+  grid-column: 1/2;
+}
+
+.todo-container span {
+  grid-column: 2/3;
 }
