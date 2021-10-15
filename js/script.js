@@ -26,8 +26,8 @@ let text = document.getElementById("new-item");
 text.focus();
 
 function addItem(e) {
-  const newItem = document.querySelector("#new-item").value;
   e.preventDefault();
+  const newItem = document.querySelector("#new-item").value;
   const n = Math.random();
   activeUL.insertAdjacentHTML(
     "beforeend",
@@ -54,7 +54,7 @@ function addItem(e) {
     const li = document.getElementById(`li${n}`);
     li.remove();
   });
-  // let checkbox = items[i].children[0].children[0];
+  document.querySelector("#new-item").value = "";
 }
 
 form.addEventListener("submit", (e) => {
