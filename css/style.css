@@ -13,6 +13,7 @@ html {
   -moz-box-sizing: inherit;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 body {
@@ -21,52 +22,70 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
-#add-container,
-#active {
-  width: 100%;
-  max-width: 500px;
-  padding: 0 20px;
+#content {
+  width: 90%;
+  max-width: 700px;
 }
 
-#add-container,
-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+form,
+.todo-container {
+  display: grid;
+  grid-template-columns: 44px auto 44px;
+  grid-template-rows: auto;
+  align-items: center;
 }
 
 textarea,
-button,
+#add,
 .todo-container,
-h2 {
+h2,
+li,
+.todo-container span,
+.remove {
   border-radius: 10px;
+}
+
+form,
+h2,
+li {
   margin-bottom: 20px;
 }
 
 textarea,
-button {
-  height: 80px;
+button,
+li {
   border: none;
+  font-size: 1em;
 }
 
 textarea {
-  width: 100%;
+  grid-column: 1/3;
+}
+
+#add {
+  grid-column: 3/4;
+}
+
+button,
+textarea {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-button {
-  width: 100px;
+#add,
+.remove {
   background: rgb(0, 182, 243);
   color: white;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  height: 100%;
 }
 
-button:active {
+#add:active {
   background: white;
 }
 
@@ -74,26 +93,28 @@ ul {
   list-style: none;
 }
 
-li {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
 .todo-container {
   background-color: white;
   color: black;
-  display: grid;
-  grid-template-columns: 40px auto;
-  align-items: center;
-  padding: 20px;
   border: none;
   text-align: left;
 }
 
 .todo-container input {
   grid-column: 1/2;
+  grid-row: 1/2;
 }
 
-.todo-container span {
+.todo-container p {
   grid-column: 2/3;
+  grid-row: 1/2;
+  padding: 20px 0;
+}
+
+.remove {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  background: red;
+  color: white;
+  margin-bottom: 0;
 }
