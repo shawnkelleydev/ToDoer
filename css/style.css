@@ -86,6 +86,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"] {
   margin-left: 20px;
+  appearance: none;
   background-color: white;
 }
 
