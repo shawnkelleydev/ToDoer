@@ -44,7 +44,7 @@ function addItem(e) {
   const checkbox = document.getElementById(n);
   checkbox.addEventListener("change", () => {
     if (checkbox.checked) {
-      checkbox.parentElement.style.background = "darkGray";
+      checkbox.parentElement.style.background = "rgb(40, 40, 40)";
     } else {
       checkbox.parentElement.style.background = "";
     }
