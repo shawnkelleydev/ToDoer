@@ -71,15 +71,20 @@ reloadStoredItems();
 ------------------------- */
 
 function addItem(e) {
+  //prevent page reload
   e.preventDefault();
   //initial declarations
   const newItem = document.querySelector("#new-item").value;
+  const errorMessage = document.querySelector("#error");
   //n = a unique barcode for each item
   const n = Math.random();
-  //html writer
-  activeUL.insertAdjacentHTML(
-    "beforeend",
-    `
+
+  if (newItem !== "") {
+    errorMessage.innerText = "";
+    //html writer
+    activeUL.insertAdjacentHTML(
+      "beforeend",
+      `
   <li id="li${n}">
     <label for="${n}" class="todo-container">
       <input type="checkbox" id="${n}" class="item" />
@@ -88,20 +93,23 @@ function addItem(e) {
     </label>
   </li>
   `
-  );
-  //handles checkbox style toggle
-  let checkbox = document.getElementById(n);
-  checkBoxListen(checkbox);
-  //declarations for storage addition and storage/li removal
-  let removeBtn = document.getElementById(`r${n}`);
-  let li = document.getElementById(`li${n}`);
-  let key = `${n}`;
-  //adds new item to local storage
-  localStorage.setItem(n, li.innerHTML);
-  //sets up remove buttons -- removes from display and storage
-  removeItems(removeBtn, li, key);
-  //clears input field
-  document.querySelector("#new-item").value = "";
+    );
+    //handles checkbox style toggle
+    let checkbox = document.getElementById(n);
+    checkBoxListen(checkbox);
+    //declarations for storage addition and storage/li removal
+    let removeBtn = document.getElementById(`r${n}`);
+    let li = document.getElementById(`li${n}`);
+    let key = `${n}`;
+    //adds new item to local storage
+    localStorage.setItem(n, li.innerHTML);
+    //sets up remove buttons -- removes from display and storage
+    removeItems(removeBtn, li, key);
+    //clears input field
+    document.querySelector("#new-item").value = "";
+  } else {
+    errorMessage.innerText = "Please provide text for your todo item.";
+  }
 }
 
 //form submission listener, activates addItem()
