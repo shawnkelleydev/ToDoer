@@ -23,11 +23,12 @@ function removeItems(btn, item, storageKey) {
 
 //handles checkboxes
 function checkBoxListen(checkbox) {
+  const parent = checkbox.parentElement.parentElement;
   checkbox.addEventListener("change", () => {
     if (checkbox.checked) {
-      checkbox.parentElement.parentElement.style.background = "rgb(40, 40, 40)";
+      parent.style.background = "rgb(40, 40, 40)";
     } else {
-      checkbox.parentElement.parentElement.style.background = "";
+      parent.style.background = "";
     }
   });
 }
