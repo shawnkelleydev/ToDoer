@@ -13,7 +13,7 @@ let text = document.getElementById("new-item");
 //focus textbox
 text.focus();
 
-//sets up remove listeners;
+//sets up remove listeners
 function removeItems(btn, item, storageKey) {
   btn.addEventListener("click", () => {
     item.remove();
@@ -25,9 +25,9 @@ function removeItems(btn, item, storageKey) {
 function checkBoxListen(checkbox) {
   checkbox.addEventListener("change", () => {
     if (checkbox.checked) {
-      checkbox.parentElement.style.background = "rgb(40, 40, 40)";
+      checkbox.parentElement.parentElement.style.background = "rgb(40, 40, 40)";
     } else {
-      checkbox.parentElement.style.background = "";
+      checkbox.parentElement.parentElement.style.background = "";
     }
   });
 }
@@ -87,7 +87,7 @@ function addItem(e) {
       `
   <li id="li${n}">
     <label for="${n}" class="todo-container">
-      <input type="checkbox" id="${n}" class="item" />
+      <div><input type="checkbox" id="${n}" class="item" /></div>
       <p>${newItem}</p>
       <button class="remove" id="r${n}"">X</button>
     </label>
